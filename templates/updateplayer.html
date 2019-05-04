@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" >Tourny Manager</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tournament">Tournaments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/team">Teams<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/player">Players</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+        As simple as the game.
+    </span>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class = "display-3" align="center">
+                Updating
+                    <small class="text-muted"> Player</small>
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">    
+        <div class="jumbotron">
+            <form method="post" action="/updatedplayer">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select Player To Update</label>
+                    <select multiple class="form-control" name="PlayerToUpdate">
+                        {% for p in players %}
+                            <option>{{ p['fname'] }} {{ p['lname'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">First Name</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Jesus" name="FirstName">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Last Name</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Argel" name="LastName">
+                </div>
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="UPDATE">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
